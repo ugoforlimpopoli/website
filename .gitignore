@@ -1,0 +1,50 @@
+# Pre-existent files
+#---------------------------------------------#
+# npm
+package.json
+# Lint
+.commitlintrc.js
+.eslintrc
+.stylelintignore
+.stylelintrc
+
+# Docker
+Dockerfile.dev
+#---------------------------------------------#
+# JetBrains
+.idea/
+
+
+test/
+docs/
+
+# Travis CI
+.travis.yml
+
+*~
+~*
+*.diff
+*.patch
+*.bak
+.DS_Store
+*.swp
+*.swo
+*.log
+*.log.*
+
+/.vscode/
+
+node_modules/
+.sass-cache/
+
+/.bundle/
+/vendor/bundle
+*.gem
+
+yarn.lock
+package-lock.json
+Gemfile.lock
+
+_site/
+.jekyll-metadata
+.jekyll-cache/

@@ -1,0 +1,40 @@
+<div id="status-message"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const apiUrl = 'https://d1s96qvov1.execute-api.eu-north-1.amazonaws.com/dev/people/status'; // Replace with your actual API endpoint
+    const timetableUrl = "{{ '/timetable.html' | relative_url }}"; // Jekyll URL for timetable page
+
+    function formatTime(timeStr) {
+      const timeParts = timeStr.split(':');
+      if (timeParts.length === 3) {
+        return `${timeParts[0]}:${timeParts[1]}:${timeParts[2].split('.')[0]}`;  // Truncate milliseconds
+      }
+      return timeStr;  // Fallback to original if format is unexpected
+    }
+
+    function fetchStatus() {
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const statusMessageElement = document.getElementById('status-message');
+          const lastUpdatedTime = data.last_update ? formatTime(data.last_update) : '';
+
+          if (data.status.includes("open")) {
+            statusMessageElement.innerHTML = `<h3>Siamo aperti!${lastUpdatedTime ? ' (Last updated at ' + lastUpdatedTime + ')' : ''} </h3>`;
+          } else if (data.status.includes("closed")) {
+            statusMessageElement.innerHTML = `<h3>Siamo chiusi!${lastUpdatedTime ? ' (Last updated at ' + lastUpdatedTime + ')' : ''} </h3>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching the status:', error);
+        });
+    }
+
+    // Initial fetch when the page loads
+    fetchStatus();
+
+    // Update status every 60 seconds (60000 milliseconds)
+    setInterval(fetchStatus, 60000);
+  });
+</script>
