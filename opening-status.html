@@ -1,11 +1,11 @@
 <!DOCTYPE html><html lang="it">
   <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - UGO Aula Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Stato di apertura - UGO Aula Studio</title>
 
 <meta name="description" content="L'aula studio dell'Unione Giovani Organizzati (UGO) a Forlimpopoli
 ">
-<link rel="canonical" href="https://ugoforlimpopoli.it/home.html"><link rel="alternate" type="application/rss+xml" title="UGO Aula Studio" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://ugoforlimpopoli.it/opening-status"><link rel="alternate" type="application/rss+xml" title="UGO Aula Studio" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -506,16 +506,214 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home"><meta itemprop="author" content="UGO Forlimpopoli"/><div class="js-article-content"><div class="layout--home"></div>
-<script>/*(function () {
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>Stato di apertura</h1></header></div><meta itemprop="headline" content="Stato di apertura"><meta itemprop="author" content="UGO Forlimpopoli"/><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
-})();*/
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><div id="status-message"></div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const apiUrl = 'https://d1s96qvov1.execute-api.eu-north-1.amazonaws.com/dev/people/status'; // Replace with your actual API endpoint
+    const timetableUrl = "/timetable.html"; // Jekyll URL for timetable page
+
+    function formatTime(timeStr) {
+      const timeParts = timeStr.split(':');
+      if (timeParts.length === 3) {
+        return `${timeParts[0]}:${timeParts[1]}:${timeParts[2].split('.')[0]}`;  // Truncate milliseconds
+      }
+      return timeStr;  // Fallback to original if format is unexpected
+    }
+
+    function fetchStatus() {
+      fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          const statusMessageElement = document.getElementById('status-message');
+          const lastUpdatedTime = data.last_update ? formatTime(data.last_update) : '';
+
+          if (data.status.includes("open")) {
+            statusMessageElement.innerHTML = `<h3>Siamo aperti!${lastUpdatedTime ? ' (Last updated at ' + lastUpdatedTime + ')' : ''} </h3>`;
+          } else if (data.status.includes("closed")) {
+            statusMessageElement.innerHTML = `<h3>Siamo chiusi!${lastUpdatedTime ? ' (Last updated at ' + lastUpdatedTime + ')' : ''} </h3>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching the status:', error);
+        });
+    }
+
+    // Initial fetch when the page loads
+    fetchStatus();
+
+    // Update status every 60 seconds (60000 milliseconds)
+    setInterval(fetchStatus, 60000);
+  });
 </script>
 
-<h1 id="ugo-aula-studio">UGO Aula studio</h1>
+<html lang="en">
+<body>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    h1 {
+        text-align: center;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    input[type="text"] {
+        padding: 10px;
+        font-size: 16px;
+        width: 300px;
+        margin-right: 10px;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+    button:hover {
+        background-color: #218838;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background-color: white;
+        margin-bottom: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px;
+    }
+    .unregister-button {
+        background-color: #dc3545;
+    }
+    .unregister-button:hover {
+        background-color: #c82333;
+    }
+</style>
+
+    <form id="registerForm">
+    <input type="text" id="nameInput" placeholder="Inserisci il tuo nome" required="" />
+    <button type="submit">Registrati</button>
+</form>
+
+<h3>Presenti in aula real-time:</h3>
+<ul id="occupantsList"></ul>
+
+</body>
+<script>
+  const registerForm = document.getElementById('registerForm');
+const nameInput = document.getElementById('nameInput');
+const occupantsList = document.getElementById('occupantsList');
+
+function updateOccupantsList() {
+    fetch('https://d1s96qvov1.execute-api.eu-north-1.amazonaws.com/dev/people/status')
+        .then(response => response.json())
+        .then(data => {
+            occupantsList.innerHTML = ''; // Clear the list first
+            data.occupants.forEach(name => {
+                const listItem = document.createElement('li');
+                listItem.textContent = name;
+
+                const unregisterButton = document.createElement('button');
+                unregisterButton.textContent = 'Unregister';
+                unregisterButton.classList.add('unregister-button');
+                unregisterButton.onclick = () => unregister(name);
+
+                listItem.appendChild(unregisterButton);
+                occupantsList.appendChild(listItem);
+            });
+        });
+}
+
+registerForm.onsubmit = function(event) {
+    event.preventDefault();
+    const name = nameInput.value;
+
+    fetch('https://d1s96qvov1.execute-api.eu-north-1.amazonaws.com/dev/people/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "registered") {
+            nameInput.value = ''; // Clear the input field
+            updateOccupantsList(); // Refresh the occupants list
+        }
+    });
+};
+
+function unregister(name) {
+    fetch('https://d1s96qvov1.execute-api.eu-north-1.amazonaws.com/dev/people/unregister', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: name }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "unregistered") {
+            updateOccupantsList(); // Refresh the occupants list
+        }
+    });
+}
+
+updateOccupantsList();
+setInterval(updateOccupantsList, 20000); // Update every 20 seconds
 
 
+</script>
+</html>
+</div><div class="d-print-none"><footer class="article__footer"><!-- start custom article footer snippet -->
 
+<!-- end custom article footer snippet -->
+</footer>
+</div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
