@@ -13,6 +13,7 @@ Dockerfile.dev
 #---------------------------------------------#
 # JetBrains
 .idea/
+.grazie.yaml
 
 
 test/
