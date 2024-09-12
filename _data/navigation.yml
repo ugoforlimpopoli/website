@@ -23,7 +23,7 @@ header:
       it-IT: *IT
       it-CH: *IT
       # @end locale config
-    url: /turnout.html
+    url: /opening-status.html
 
   - titles:
       # @start locale config
