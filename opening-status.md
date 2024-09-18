@@ -5,7 +5,7 @@ permalink: /opening-status
 ---
 
 Il giorno **Giovedì 19 settembre** l'aula rimarrà chiusa a causa dello stato di
-allerta meteo per pioggia.
+[allerta meteo](https://allertameteo.regione.emilia-romagna.it) per pioggia.
 
   {% include opening-status.html %}
 
