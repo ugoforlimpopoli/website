@@ -4,7 +4,7 @@ title: Stato di apertura
 permalink: /opening-status
 ---
 
-Il giorno **Giovedì 19 aprile** l'aula rimarrà chiusa a causa dello stato di
+Il giorno **Giovedì 19 settembre** l'aula rimarrà chiusa a causa dello stato di
 allerta meteo per pioggia.
 
   {% include opening-status.html %}
