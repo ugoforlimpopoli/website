@@ -13,7 +13,7 @@ url = "/about/"
 weight = 20
 [[menu.main]]
 name = "Affluenza"
-url = "/opening-status/"
+url = "https://tracking.ugoforlimpopoli.org"
 weight = 20
 [[menu.main]]
 name = "Moduli"
