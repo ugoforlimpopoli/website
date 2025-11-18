@@ -13,7 +13,7 @@ che utilizziamo per comunicare eventuali variazioni di orario/estensioni.
 
 Quando arriverai in aula troverai dei QR codes che ti permetteranno di registrare la tua presenza in aula.
 Questo permetterà a chi non è in aula di verificare **in tempo reale** lo stato di apertura dell'aula nella pagina
-[Affluenza](/opening-status).
+[Affluenza](https://tracking.ugoforlimpopoli.org).
 
 È molto importante collaborare su questo aspetto perchè, in questo modo è possibile usufruire dell'aula
 anche fuori dall'[orario standard](https://maps.app.goo.gl/7RqrmfWgGXU9zotq7) ⏰ se almeno un volontario è presente.
