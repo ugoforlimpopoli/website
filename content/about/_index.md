@@ -18,4 +18,4 @@ Ci trovi in [Via Giuseppe Mazzini, 2 a Forlimpopoli](https://maps.app.goo.gl/7Rq
 
 ### Contatti
 
-- [ugoforlimpopoli2018@gmail.com](mailto:ugoforlimpopoli2018@gmail.com)
+- [info@ugoforlimpopoli.org](mailto:info@ugoforlimpopoli.org)
