@@ -9,7 +9,7 @@ author: "Frampula Events"
 description: "Unisciti a noi il 17 gennaio per un corso gratuito e un torneo di scacchi all'Ex Asilo Rosetti. Aperto a tutti, dai principianti ai grandi maestri!"
 ---
 
-- [Locandina](/posts/locandine_torneo_corso_scacchi_gen_2026.png)
+- [Locandina](/posts/locandine_torneo_corso_scacchi_gen_2026.pdf)
 - [Bando](/posts/bando-torneo-gen2026.pdf) Torneo
 - Torneo su [`vesus.org`](https://vesus.org/tournament/7rQtTaZ3)
 
