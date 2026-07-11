@@ -121,6 +121,14 @@ p.st {
     margin-top:-1em
 }
 
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
 ul li img {
     height:1em
 }
