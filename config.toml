@@ -12,10 +12,6 @@ name = "About"
 url = "/about/"
 weight = 20
 [[menu.main]]
-name = "Affluenza"
-url = "https://tracking.ugoforlimpopoli.org"
-weight = 20
-[[menu.main]]
 name = "Moduli"
 url = "/first-timers/"
 weight = 20
