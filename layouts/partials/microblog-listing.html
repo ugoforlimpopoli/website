@@ -4,7 +4,7 @@
   <p>
     <span class="date">
         <a href="{{ .Permalink }}">
-            {{.Date.Format "January 2, 2006"}}
+            {{ .Date | time.Format ":date_long" }}
         </a>
     </span>
     <br>

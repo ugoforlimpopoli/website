@@ -1,5 +1,6 @@
 baseURL = 'https://ugoforlimpopoli.org'
-languageCode = 'it'
+defaultContentLanguage = 'it'
+locale = 'it-IT'
 title = 'UGO Aula Studio'
 
 [markup]

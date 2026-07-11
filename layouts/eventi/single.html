@@ -1,4 +1,4 @@
 {{ define "main" }}
-<h4>{{.Date.Format "January 2, 2006"}}</h4>
+<h4>{{ .Date | time.Format ":date_long" }}</h4>
 {{ .Content }}
 {{ end }}
