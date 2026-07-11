@@ -2,6 +2,15 @@ baseURL = 'https://ugoforlimpopoli.org'
 languageCode = 'it'
 title = 'UGO Aula Studio'
 
+[markup]
+[markup.goldmark]
+[markup.goldmark.parser]
+autoHeadingID = true
+autoHeadingIDType = 'github'
+
+[markup.goldmark.parser.attribute]
+block = true
+
 [menu]
 [[menu.main]]
 name = "Home"
@@ -34,4 +43,4 @@ disable = true
 section = ["HTML"]
 
 [params]
-logo = "/images.ugo-logo.png"
+logo = "/images/ugo-logo.png"

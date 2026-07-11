@@ -32,7 +32,7 @@ di Forlimpopoli».
 *Matteo Bondi*
 *© RIPRODUZIONE RISERVATA*
 
-![](/images/ugo_2018_inaugurazione.png)
+{{< img src="/images/ugo_2018_inaugurazione.png" alt="Inaugurazione UGO" >}}
 
 Links:
 - Instagram: https://www.instagram.com/p/Bjb-IAPlb1d/
