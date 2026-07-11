@@ -12,7 +12,7 @@ Ci trovi in [Via Giuseppe Mazzini, 2 a Forlimpopoli](https://maps.app.goo.gl/7Rq
 
 ### Le nostre pagine social
 
-- Canale [Whatsapp](https://whatsapp.com/channel/0029VazDGFXGufIpx2xVJ60H)
+- Community [Whatsapp](https://chat.whatsapp.com/BpOkUG1Et7J7rtRkUgX4m4)
 - Instagram: [@ugo.forlimpopoli](https://www.instagram.com/ugo.forlimpopoli)
 - Bluesky: [@ugoforlimpopoli.org](https://bsky.app/profile/ugoforlimpopoli.org)
 - Facebook: [@aulastudioforlimpopoli](https://www.facebook.com/aulastudioforlimpopoli)
